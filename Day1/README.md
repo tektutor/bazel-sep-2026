@@ -1,6 +1,5 @@
-<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/bee685b5-8c91-4d2f-8c47-7065f1aee23f" /># Day 1
 
-Today's Agenda
+## Today's Agenda
 <pre>
 - [☑️] Bazel Overview
 - [☑️] Why Bazel
