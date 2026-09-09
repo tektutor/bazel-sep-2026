@@ -4,7 +4,7 @@ Today's Agenda
 <pre>
 - [☑️] Bazel Overview
 - [☑️] Why Bazel
-- [ ] Bazel High-Level Architecture
+- [☑️] Bazel High-Level Architecture
 - [☑️] Workspace
 - [☑️] Build Process & Artifacts
 - [☑️] Artifact
@@ -175,6 +175,9 @@ Today's Agenda
   - Executes independent actions in parallel
   - Writes outputs to bazel-out folder
 </pre>
+
+Info - Bazel High-Level Architecture
+![bazel](bazel_architecture_v4.svg)
 
 ## Lab - Installing linux utilites required to perform the lab below
 ```
