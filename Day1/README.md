@@ -387,3 +387,18 @@ bazel clean
 
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/ea9230ce-dff3-4183-a5e9-63b7958fe76d" />
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/e1d116e8-d971-4a67-b8df-7366e9805c7c" />
+
+## Lab - Building java project using maven build tool
+Installing maven
+```
+sudo apt update && sudo apt install -y maven
+```
+
+Now proceed with the java application build
+```
+cd ~/bazel-sep-2026
+git pull
+cd Day1/java-with-maven
+tree
+mvn clean pacage
+```
