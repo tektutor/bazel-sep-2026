@@ -400,5 +400,6 @@ cd ~/bazel-sep-2026
 git pull
 cd Day1/java-with-maven
 tree
-mvn clean pacage
+mvn --version
+mvn clean package
 ```
