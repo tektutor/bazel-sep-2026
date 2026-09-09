@@ -242,15 +242,9 @@ sudo apt update
 sudo apt install -y apt-transport-https curl gnupg
 
 # Add Bazel's GPG Key
-curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg -dearmor > bazel-archive-keyring.gpg
-sudo mv bazel-archive-keyring.gpg /usr/share/keyrings/bazel-archive-keyring.gpg
-
-# Add Bazel repo
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg]"
-
-# Install bazel
-sudo apt update
-sudo apt install -y bazel
-
+sudo curl -fsSL -o /usr/local/bin/bazel \
+  https://github.com/bazelbuild/bazelisk/releases/latest/download/bazelisk-linux-amd64
+sudo chmod +x /usr/local/bin/bazel
+ 
 bazel --version
 ```
