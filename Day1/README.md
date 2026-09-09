@@ -148,3 +148,30 @@ Today's Agenda
   - Genrule Action
 </pre>
 
+## Info - Bazel Dependency
+<pre>
+- Bazel runs every build in 3 strict sequential phases
+- Each Phase must complete before the next one begins
+- 3 Phases
+  - Phase 1 - Loading Phase
+  - Phase 2 - Analysis Phase
+  - Phase 3 - Execution Phase
+- What happens during Phase 1 - Loading phase ?
+  - Reads BUILD file(s)
+  - Evaluates all load() statements and .bzl files
+  - Expands macros
+  - Constructs the target graph
+- What happens during Phase 2 - Analysis Phase ?
+  - Bazel takes the target graph from the loading phase and converts it into an action graph
+  - Runs the implemention function of every fule
+  - Resolves select() condidtions for the current platform
+  - Determines exactly which actions need to run and their order
+  - No files are read or compiled yet during this phase, its pure analysis
+- What happens during the Phase 3 - Execution Phase ?
+  - Bazel runs the actions from the action graph to produce the build outputs
+  - Checks the local action cache for each action ( /home/jegan/.cache/bazel/_bazel_jegan/a1b2c3344)
+  - Checks the remote cache if configured ( JFrog Artifactory or Sonatype Nexux or Gitea )
+  - Runs uncached actions in sandboxed environments
+  - Executes independent actions in parallel
+  - Writes outputs to bazel-out folder
+</pre>
