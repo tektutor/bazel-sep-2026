@@ -11,7 +11,7 @@
 - [☑️] Loading Phase
 - [☑️] Analysis Phase
 - [☑️] Execution Phase
-- [ ] Dependency
+- [☑️] Dependency
 - [ ] Incremental & Reproducibility
 - [☑️] Hermetic Builds
 - [☑️] Action Key
@@ -22,13 +22,13 @@
 - [ ] Aspect
 - [ ] Toolchain
 - [ ] Configuration
-- [ ] Visibility
+- [☑️] Visibility
 - [ ] Tag
-- [ ] Install Bazel in Linux
-- [ ] Build a C++ Project using Bazel
+- [☑️] Install Bazel in Linux
+- [☑️] Build a C++ Project using Bazel
 - [ ] Build a Python Project using Bazel
-- [ ] Build a Java Project using Bazel
-- [ ] Build a C# Project using Bazel
+- [☑️] Build a Java Project using Bazel
+- [☑️] Build a C# Project using Bazel
 </pre>
 
 ## Info - Bazel Overview
