@@ -248,3 +248,4 @@ sudo chmod +x /usr/local/bin/bazel
  
 bazel --version
 ```
+<img width="1767" height="344" alt="image" src="https://github.com/user-attachments/assets/f9cd360a-c94f-494c-9c0f-5860a933e300" />
