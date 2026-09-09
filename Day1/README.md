@@ -1,10 +1,9 @@
-<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/bee685b5-8c91-4d2f-8c47-7065f1aee23f" /># Day 1
 
-Today's Agenda
+## Today's Agenda
 <pre>
 - [☑️] Bazel Overview
 - [☑️] Why Bazel
-- [ ] Bazel High-Level Architecture
+- [☑️] Bazel High-Level Architecture
 - [☑️] Workspace
 - [☑️] Build Process & Artifacts
 - [☑️] Artifact
@@ -176,6 +175,9 @@ Today's Agenda
   - Writes outputs to bazel-out folder
 </pre>
 
+Info - Bazel High-Level Architecture
+![bazel](bazel_architecture_v4.svg)
+
 ## Lab - Installing linux utilites required to perform the lab below
 ```
 sudo apt update && sudo apt install -y build-essential tree vim 
@@ -221,8 +223,111 @@ mkdir bin
 cd bin
 cmake ..
 tree .
+cat Makefile
+make
+./app
+make clean
+rm -rf *
+cd ..
 ```
 
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/ec0b38ac-a1c8-4002-a359-a5c502b68ea0" />
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/0c8aaf94-bb39-4f4e-a5bd-adcd68bf5860" />
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/40d62803-a2c7-4886-91a2-e225693a55d3" />
+
+## Lab - Installing Bazel build tool in Ubuntu
+```
+sudo apt update
+sudo apt install -y apt-transport-https curl gnupg
+
+# Add Bazel's GPG Key
+sudo curl -fsSL -o /usr/local/bin/bazel \
+  https://github.com/bazelbuild/bazelisk/releases/latest/download/bazelisk-linux-amd64
+sudo chmod +x /usr/local/bin/bazel
+ 
+bazel --version
+```
+<img width="1767" height="344" alt="image" src="https://github.com/user-attachments/assets/f9cd360a-c94f-494c-9c0f-5860a933e300" />
+
+## Lab - Developing your first Bazel CPP Project
+```
+cd ~
+mkdir cpp-with-bazel
+cd cpp-with-bazel
+mkdir src
+touch src/BUILD
+touch src/hello.h
+touch src/hello.cpp
+touch src/main.cpp
+touch MODULE.bazel
+
+tree
+```
+
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/448ddb14-9bbc-408e-8e14-9ffe28cc0bd5" />
+
+MODULE.bazel
+<pre>
+module ( name = "cpp-with-bazel", version="1.0" )
+bazel_dep( name = "rules_cc", version = "0.2.18" )
+</pre>
+
+BUILD
+<pre>
+load("@rules_cc//cc:defs.bzl", "cc_binary")
+
+cc_binary (
+   name = "hello",
+   srcs = ["hello.cpp", "hello.h", "main.cpp"],
+)
+</pre>
+
+hello.h
+```
+# pragma once
+
+# include <iostream>
+# include <string>
+
+std::string sayHello();
+```
+  
+hello.cpp
+<pre>
+#include "hello.h"
+
+std::string sayHello() {
+  return "Hello Bazel !";
+}
+</pre>
+
+main.cpp
+<pre>
+#include "hello.h"
+
+int main(void) {
+  std::cout << sayHello() << std::endl;
+  return 0;
+}
+</pre>
+
+
+Build it
+```
+cd ~
+cd bazel-sep-2026
+git pull
+cd Day1/cpp-with-bazel
+cat MODULE.bazel
+cat src/BUILD
+
+bazel build //src:hello
+ls
+bazel run //src:hello
+bazel clean
+ls
+```
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/67cb0dae-dff9-4090-bd30-90599d9eee08" />
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/491e325c-4b97-4426-8b82-4591fd3143cf" />
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/f0a72e08-9ba6-4f24-a067-31dcd9f5907a" />
+
