@@ -26,7 +26,7 @@
 - [ ] Tag
 - [☑️] Install Bazel in Linux
 - [☑️] Build a C++ Project using Bazel
-- [ ] Build a Python Project using Bazel
+- [☑️] Build a Python Project using Bazel
 - [☑️] Build a Java Project using Bazel
 - [☑️] Build a C# Project using Bazel
 </pre>
