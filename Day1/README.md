@@ -311,3 +311,21 @@ int main(void) {
   return 0;
 }
 </pre>
+
+
+Build it
+```
+cd ~
+cd bazel-sep-2026
+git pull
+cd Day1/cpp-with-bazel
+cat MODULE.bazel
+cat src/BUILD
+
+bazel build //src:hello
+ls
+bazel run //src:hello
+bazel clean
+ls
+```
+
