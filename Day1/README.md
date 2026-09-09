@@ -350,3 +350,24 @@ bazel run HelloTest
 bazel clean
 ls
 ```
+
+Troubleshooting Java binary not found error
+```
+cd ~/bazel-sep-2026
+cd Day1/java-with-bazel
+touch .bazelrc
+```
+
+.bazelrc
+<pre>
+build --java_runtime_version=remotejdk_21
+build --tool_java_runtime_version=remotejdk_21  
+</pre>
+
+Build and run it
+```
+cd ~/bazel-sep-2026
+cd Day1/java-with-bazel
+cat BUILD.bazel
+bazel run //:hello_world
+```
