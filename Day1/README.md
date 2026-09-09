@@ -1,4 +1,4 @@
-# Day 1
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/bee685b5-8c91-4d2f-8c47-7065f1aee23f" /># Day 1
 
 Today's Agenda
 <pre>
@@ -211,4 +211,18 @@ tree
 
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/d558b9c0-f455-4b66-9fec-7b2f70ae64d4" />
 
+## Lab - Cpp with CMake
+```
+cd ~/bazel-sep-2026
+git pull
+cd Day1/cpp-with-cmake
+tree
+mkdir bin
+cd bin
+cmake ..
+tree .
+```
 
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/ec0b38ac-a1c8-4002-a359-a5c502b68ea0" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/0c8aaf94-bb39-4f4e-a5bd-adcd68bf5860" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/40d62803-a2c7-4886-91a2-e225693a55d3" />
