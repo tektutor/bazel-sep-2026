@@ -98,5 +98,53 @@ Today's Agenda
 
 ## Info - Artifact
 <pre>
-
+- An artifact in Bazel is any file that participates in the build either as input/output
+- There are Two types of artifacts
+  1. Source artifacts
+     - examples
+       - *.cc, *.cpp, *.hpp, *.c, *.json, *.yaml, *.yml, *.h
+  2. Derived artifacts
+     - examples
+       - *.o ( compiled object files )
+       - *.a ( static library )
+       - *.so ( shared objects - equivalent to windows dll )
+       - application final executable binary file
+       - application test executable binary file
+- every artifact is identified by a content hash, not a filename or timestamp
+- Bazel stores this in its action cache
 </pre>
+
+## Info - Bazel Action
+<pre>
+- An action in Bazel is a single unit of work that takes input artifacts and produces output artifacts
+- Think of it as one command bazel runs during a build
+  Examples
+  - a compilation
+  - a link
+  - code generation step
+  - test execution
+- Some key properties of Bazel Action
+  - Hermetic
+    - the action can only see its declared targets
+    - it can not read random files from your disk
+    - in case Bazel attempts to access a disk path, the sandbox will block it
+  - Deterministic
+    - same inputs always produces same outputs
+    - this is what makes caching work correctly
+  - Cacheable
+    - Bazel computes a cache key from the hash of all inputs plus the command string
+    - If the key matches a prior run, Bazel skips the action entirely and reuses the cached output
+  - Sanboxed
+    - each action runs in an isolated environment with only its declared inputs
+- Examples
+  - compiling one file
+  - Inputs: hello.h hello.cpp main.cpp
+    Command: g++ -std=c++17 -c hello.cpp -o hello.o
+    Outputs: hello.o
+- there are many types of Bazel actions
+  - Compile Action
+  - Link action
+  - Archive Action
+  - Genrule Action
+</pre>
+
