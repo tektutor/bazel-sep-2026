@@ -235,3 +235,22 @@ cd ..
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/ec0b38ac-a1c8-4002-a359-a5c502b68ea0" />
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/0c8aaf94-bb39-4f4e-a5bd-adcd68bf5860" />
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/40d62803-a2c7-4886-91a2-e225693a55d3" />
+
+## Lab - Installing Bazel build tool in Ubuntu
+```
+sudo apt update
+sudo apt install -y apt-transport-https curl gnupg
+
+# Add Bazel's GPG Key
+curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg -dearmor > bazel-archive-keyring.gpg
+sudo mv bazel-archive-keyring.gpg /usr/share/keyrings/bazel-archive-keyring.gpg
+
+# Add Bazel repo
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg]"
+
+# Install bazel
+sudo apt update
+sudo apt install -y bazel
+
+bazel --version
+```
