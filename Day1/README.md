@@ -403,3 +403,5 @@ tree
 mvn --version
 mvn clean package
 ```
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/d624eeb7-8931-4c66-a5ed-178f4fa6eaf5" />
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/3bb79323-7415-4d89-b6ba-d612cef3635a" />
