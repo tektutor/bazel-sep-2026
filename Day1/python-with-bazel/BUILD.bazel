@@ -1,0 +1,18 @@
+load("@rules_python//python:defs.bzl","py_library","py_binary","py_test")
+
+py_library(
+  name = "lib_hello",
+  srcs = ["lib.py"],
+)
+
+py_binary (
+	name = "app",
+	srcs = ["app.py"],
+	deps = [":lib_hello"],
+)
+
+py_test(
+   name = "test_lib",
+   srcs = ["test_lib.py"],
+   deps = [":lib_hello"],
+)
