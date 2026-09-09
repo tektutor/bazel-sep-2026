@@ -1,0 +1,7 @@
+load("@rules_dotnet//dotnet:defs.bzl", "csharp_binary")
+
+csharp_binary(
+   name = "hello",
+   srcs = ["hello.cs"],
+   target_frameworks = ["net8.0"],
+)

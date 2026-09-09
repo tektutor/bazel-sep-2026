@@ -1,0 +1,13 @@
+module ( name = "hello_world", version = "1.0" )
+bazel_dep( name = "rules_java", version = "9.6.1" )
+bazel_dep( name = "rules_jvm_external", version = "7.0" )
+
+maven = use_extension( "@rules_jvm_external//:extensions.bzl", "maven" )
+maven.install(
+   artifacts = [
+	   "junit:junit:4.13.2",
+	   "org.hamcrest:hamcrest-core:1.3",
+   ],
+)
+
+use_repo(maven, "maven")
