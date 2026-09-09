@@ -11,7 +11,7 @@
 - [☑️] Loading Phase
 - [☑️] Analysis Phase
 - [☑️] Execution Phase
-- [ ] Dependency
+- [☑️] Dependency
 - [ ] Incremental & Reproducibility
 - [☑️] Hermetic Builds
 - [☑️] Action Key
@@ -22,13 +22,13 @@
 - [ ] Aspect
 - [ ] Toolchain
 - [ ] Configuration
-- [ ] Visibility
+- [☑️] Visibility
 - [ ] Tag
-- [ ] Install Bazel in Linux
-- [ ] Build a C++ Project using Bazel
+- [☑️] Install Bazel in Linux
+- [☑️] Build a C++ Project using Bazel
 - [ ] Build a Python Project using Bazel
-- [ ] Build a Java Project using Bazel
-- [ ] Build a C# Project using Bazel
+- [☑️] Build a Java Project using Bazel
+- [☑️] Build a C# Project using Bazel
 </pre>
 
 ## Info - Bazel Overview
@@ -371,3 +371,19 @@ cd Day1/java-with-bazel
 cat BUILD.bazel
 bazel run //:hello_world
 ```
+
+## Lab - Building a CSharp dot net application using bazel
+```
+cd ~/bazel-sep-2026
+git pull
+cd Day1/csharp-with-bazel
+cat MODULE.bazel
+cat BUILD.bazel
+
+bazel build //:hello
+bazel run //:hello
+bazel clean
+```
+
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/ea9230ce-dff3-4183-a5e9-63b7958fe76d" />
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/e1d116e8-d971-4a67-b8df-7366e9805c7c" />
