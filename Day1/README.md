@@ -2,8 +2,8 @@
 
 Today's Agenda
 <pre>
-- [ ] Bazel Overview
-- [ ] Why Bazel
+- [☑️] Bazel Overview
+- [☑️] Why Bazel
 - [ ] Bazel High-Level Architecture
 - [ ] Workspace
 - [ ] Build Process & Artifacts
