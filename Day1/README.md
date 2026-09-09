@@ -284,15 +284,15 @@ cc_binary (
 </pre>
 
 hello.h
-<pre>
+```
 # pragma once
 
 # include <iostream>
 # include <string>
 
 std::string sayHello();
-</pre>
-
+```
+  
 hello.cpp
 <pre>
 #include "hello.h"
