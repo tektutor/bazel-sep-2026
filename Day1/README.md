@@ -249,3 +249,65 @@ sudo chmod +x /usr/local/bin/bazel
 bazel --version
 ```
 <img width="1767" height="344" alt="image" src="https://github.com/user-attachments/assets/f9cd360a-c94f-494c-9c0f-5860a933e300" />
+
+## Lab - Developing your first Bazel CPP Project
+```
+cd ~
+mkdir cpp-with-bazel
+cd cpp-with-bazel
+mkdir src
+touch src/BUILD
+touch src/hello.h
+touch src/hello.cpp
+touch src/main.cpp
+touch MODULE.bazel
+
+tree
+```
+
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/448ddb14-9bbc-408e-8e14-9ffe28cc0bd5" />
+
+MODULE.bazel
+<pre>
+module ( name = "cpp-with-bazel", version="1.0" )
+bazel_dep( name = "rules_cc", version = "0.2.18" )
+</pre>
+
+BUILD
+<pre>
+load("@rules_cc//cc:def.bzl", "cc_binary")
+
+cc_binary (
+   name = "hello",
+   srcs = ["hello.cpp", "hello.h", "main.cpp"],
+)
+</pre>
+
+hello.h
+<pre>
+# pragma once
+
+# include <iostream>
+# include <string>
+
+std::string sayHello();
+</pre>
+
+hello.cpp
+<pre>
+#include "hello.h"
+
+std::string sayHello() {
+  return "Hello Bazel !";
+}
+</pre>
+
+main.cpp
+<pre>
+#include "hello.h"
+
+int main(void) {
+  std::cout << sayHello() << std::endl;
+  return 0;
+}
+</pre>
