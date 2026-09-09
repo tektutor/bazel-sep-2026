@@ -5,18 +5,18 @@ Today's Agenda
 - [☑️] Bazel Overview
 - [☑️] Why Bazel
 - [ ] Bazel High-Level Architecture
-- [ ] Workspace
-- [ ] Build Process & Artifacts
-- [ ] Artifact
-- [ ] Action
-- [ ] Loading Phase
-- [ ] Analysis Phase
-- [ ] Execution Phase
+- [☑️] Workspace
+- [☑️] Build Process & Artifacts
+- [☑️] Artifact
+- [☑️] Action
+- [☑️] Loading Phase
+- [☑️] Analysis Phase
+- [☑️] Execution Phase
 - [ ] Dependency
 - [ ] Incremental & Reproducibility
-- [ ] Hermetic Builds
-- [ ] Action Key
-- [ ] Sandbox Isolation
+- [☑️] Hermetic Builds
+- [☑️] Action Key
+- [☑️] Sandbox Isolation
 - [ ] Dependency Management ( Modern Bazel )
 - [ ] Macro
 - [ ] Aspect
