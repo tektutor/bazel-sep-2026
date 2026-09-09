@@ -1,5 +1,6 @@
 # This instructs bazel to use the embedded jre that comes with bazel to launch the bazel server
-startup --server_javabase=@bazel_tools/tools/jdk:embedded_jdk
+# The below one works if we have installed bazel with embedded jdk only
+# startup --server_javabase=@bazel_tools/tools/jdk:embedded_jdk
 
 # This tell the version of jdk and jre required to build and run you java application
 build --java_runtime_version=remotejdk_21
