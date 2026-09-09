@@ -221,6 +221,12 @@ mkdir bin
 cd bin
 cmake ..
 tree .
+cat Makefile
+make
+./app
+make clean
+rm -rf *
+cd ..
 ```
 
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/ec0b38ac-a1c8-4002-a359-a5c502b68ea0" />
