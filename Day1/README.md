@@ -26,7 +26,7 @@
 - [ ] Tag
 - [☑️] Install Bazel in Linux
 - [☑️] Build a C++ Project using Bazel
-- [ ] Build a Python Project using Bazel
+- [☑️] Build a Python Project using Bazel
 - [☑️] Build a Java Project using Bazel
 - [☑️] Build a C# Project using Bazel
 </pre>
@@ -405,3 +405,18 @@ mvn clean package
 ```
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/d624eeb7-8931-4c66-a5ed-178f4fa6eaf5" />
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/3bb79323-7415-4d89-b6ba-d612cef3635a" />
+
+## Lab - Building python project using bazel
+```
+cd ~/bazel-sep-2026
+git pull
+cd Day1/python-with-bazel
+cat MODULE.bazel
+cat BUILD.bazel
+
+bazel build app
+bazel run app
+bazel test test_lib
+
+bazel clean
+```
