@@ -275,7 +275,7 @@ bazel_dep( name = "rules_cc", version = "0.2.18" )
 
 BUILD
 <pre>
-load("@rules_cc//cc:def.bzl", "cc_binary")
+load("@rules_cc//cc:defs.bzl", "cc_binary")
 
 cc_binary (
    name = "hello",
