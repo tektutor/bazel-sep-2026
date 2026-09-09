@@ -196,6 +196,7 @@ Navigate to project folder
 cd ~/bazel-sep-2026
 git pull
 cd Day1/cpp-with-make
+mkdir bin
 tree
 make clean all
 bin/hello
