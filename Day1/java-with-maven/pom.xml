@@ -5,6 +5,11 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
+	<properties>
+		<maven.compiler.version>1.8</maven.compiler.version>
+		<maven.target.version>1.8</maven.target.version>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
