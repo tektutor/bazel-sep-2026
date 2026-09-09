@@ -175,3 +175,22 @@ Today's Agenda
   - Executes independent actions in parallel
   - Writes outputs to bazel-out folder
 </pre>
+
+## Lab - Build your first C++ make project
+
+Clone this training repository
+```
+cd ~
+git clone https://github.com/tektutor/bazel-sep-2026.git
+cd bazel-sep-2026
+```
+
+Navigate to project folder
+```
+cd ~/bazel-sep-2026
+git pull
+cd Day1/cpp-with-make
+tree
+make clean all
+bin/hello
+```
