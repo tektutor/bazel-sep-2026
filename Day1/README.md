@@ -331,3 +331,22 @@ ls
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/491e325c-4b97-4426-8b82-4591fd3143cf" />
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/f0a72e08-9ba6-4f24-a067-31dcd9f5907a" />
 
+
+## Lab - Building your first java project with bazel build and test tool
+```
+cd ~/bazel-sep-2026
+git pull
+cd Day1/java-with-bazel
+cat MODULE.bazel
+cat BUILD.bazel
+ls
+bazel build hello_world
+ls
+
+bazel run hello_world
+
+bazel run HelloTest
+
+bazel clean
+ls
+```
