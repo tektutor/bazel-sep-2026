@@ -193,4 +193,15 @@ cd Day1/cpp-with-make
 tree
 make clean all
 bin/hello
+tree
+make clean
+tree
 ```
+
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/20d0c7ae-ac7d-45b3-9d31-415ea9d5907c" />
+
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/83765f66-3ade-45b8-9d48-3fba7feb925e" />
+
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/d558b9c0-f455-4b66-9fec-7b2f70ae64d4" />
+
+
