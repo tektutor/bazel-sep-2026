@@ -176,6 +176,12 @@ Today's Agenda
   - Writes outputs to bazel-out folder
 </pre>
 
+## Lab - Installing linux utilites required to perform the lab below
+```
+sudo apt update && sudo apt install -y build-essential tree vim 
+```
+
+
 ## Lab - Build your first C++ make project
 
 Clone this training repository
