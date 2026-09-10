@@ -2,9 +2,9 @@
 
 ## Today's Agenda
 <pre>
-- [] Using pre-built static library in C++ project using cc_import
-- [ ] - Monorepo concepts in Bazel
-  - [] detailed overview along with hands-on examples
+- [☑️] Using pre-built static library in C++ project using cc_import
+- [☑️] - Monorepo concepts in Bazel
+  - [☑️] detailed overview along with hands-on examples
 - [] Bazel caching mechanisms
   - [] local cache
   - [] remote cache
@@ -13,8 +13,8 @@
   - [] hands-on using JFrog Artifactory or Git-based registries
   - [] Custom rule development using Starlark
   - [] with practical examples ( beyond macros )
-- [] Bazel testing framework
-- [] including bazel test
+- [☑️] Bazel testing framework
+- [☑️] including bazel test
 - [] test rules
 - [] basic coverage concepts
 </pre>
@@ -177,4 +177,52 @@ bazel build --config=debug //app:hello --subcommands
 bazel build --config=release //app:hello --subcommands
 ```
 
+## Lab - What is a sandbox isolation in Bazel ?
+
+Note
+<pre>
+- Every build action runs in a private, temporary filesystem
+- it can only see files that were explicitly declared as inputs
+- For example, I may have 100 files in a bazel project folder,  but if I have declared only 5
+  files as inputin cc_* blocks, only those 5 files are visibile within sandbox folder 
+- The other 95 files though they are in your work machine filesystem, bazel sandbox can't see them
+</pre>
+
+```
+cd ~/bazel-sep-2026
+git pull
+cd Day2/build-configurations-release-debug
+bazel aquery //app:hello --output=jsonproto 2>/dev/null | grep -oE '[^"]+\.(cpp|h|cc|c|cxx|hpp)' | grep -v "^/" | sort -u
+bazel aquery //lib:hello_lib --output=jsonproto 2>/dev/null | grep -oE '[^"]+\.(cpp|h|cc|c|cxx|hpp)' | grep -v "^/" | sort -u
+bazel aquery //test:hello_test --output=jsonproto 2>/dev/null | grep -oE '[^"]+\.(cpp|h|cc|c|cxx|hpp)' | grep -v "^/" | sort -u
+```
+
+## Lab - Understanding Action Key
+<pre>
+- A SHA-256 hash that uniquely identifies a build action
+- Bazel uses it as the cache lookup key
+- if the key matches something in the cache, the action is skipped entirely
+- This is how action key is computed
+  Action key = SHA-256 (
+   hash of every input file content +
+   hash of the command string +
+   hash of the compiler binary +
+   hash of declared environments vars +
+   Bazel version
+  )
+</pre>
+
+```
+cd ~/bazel-sep-2026
+git pull
+cd Day2/build-configurations-release-debug
+
+bazel aquery //app:hello --output=text 2>/dev/null \
+  | grep -iE "key|digest|hash|fingerprint"
+
+bazel aquery //app:hello --output=text 2>/dev/null \
+  | grep -iE "ActionKey:|Mnemonic:|Target:"
+```
+
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/31e70b60-a725-4f16-9a3a-f7e4690d1197" />
 
