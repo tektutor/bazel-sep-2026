@@ -111,6 +111,10 @@ bazel build //src:math_app
 # This should fail as other package is not under the math_app_users package group
 bazel build //other:other_app
 
-# This will delete the build output kept in disk and the downloads, server state maintained the bazel server 
+# This will delete the build output kept in disk and the downloads, server state maintained the bazel server
+# This is a blocking command
 bazel clean --expunge
+
+# This runs in the background, doesn't not block the terminal
+bazel clean --expunge_async 
 ```
