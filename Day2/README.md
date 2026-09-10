@@ -2,7 +2,7 @@
 
 ## Today's Agenda
 <pre>
-- Using pre-built static library in C++ project using cc_import
+- [] Using pre-built static library in C++ project using cc_import
 - [ ] - Monorepo concepts in Bazel
   - [] detailed overview along with hands-on examples
 - [] Bazel caching mechanisms
