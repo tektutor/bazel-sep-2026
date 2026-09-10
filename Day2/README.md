@@ -43,6 +43,7 @@ cd Day2/cppapp-with-prebuilt-lib-dependency
 cd third-party/libmath
 cat BUILD.bazel
 cp ~/bazel-sep-2026/Day2/math-lib/bazel-bin/src/libmath_lib.a .
+mv libmath_lib.a libmath.a
 ls
 cd ../..
 cat MODULE.bazel
