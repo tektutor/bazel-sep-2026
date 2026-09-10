@@ -195,5 +195,33 @@ cd Day2/build-configurations-release-debug
 bazel aquery //app:hello --output=jsonproto 2>/dev/null | grep -oE '[^"]+\.(cpp|h|cc|c|cxx|hpp)' | grep -v "^/" | sort -u
 bazel aquery //lib:hello_lib --output=jsonproto 2>/dev/null | grep -oE '[^"]+\.(cpp|h|cc|c|cxx|hpp)' | grep -v "^/" | sort -u
 bazel aquery //test:hello_test --output=jsonproto 2>/dev/null | grep -oE '[^"]+\.(cpp|h|cc|c|cxx|hpp)' | grep -v "^/" | sort -u
+```
+
+## Lab - Understanding Action Key
+<pre>
+- A SHA-256 hash that uniquely identifies a build action
+- Bazel uses it as the cache lookup key
+- if the key matches something in the cache, the action is skipped entirely
+- This is how action key is computed
+  Action key = SHA-256 (
+   hash of every input file content +
+   hash of the command string +
+   hash of the compiler binary +
+   hash of declared environments vars +
+   Bazel version
+  )
+</pre>
+
+```
+cd ~/bazel-sep-2026
+git pull
+cd Day2/build-configurations-release-debug
+
+bazel aquery //app:hello --output=text 2>/dev/null \
+  | grep -iE "key|digest|hash|fingerprint"
+
+bazel aquery //app:hello --output=text 2>/dev/null \
+  | grep -iE "ActionKey:|Mnemonic:|Target:"
+
 
 ```
