@@ -75,3 +75,13 @@ cd ~/bazel-sep-2026/Day2/cppapp-with-prebuilt-lib-dependency
 
 bazel aquery //src:math_app
 ```
+
+Visualize dependency as an image
+```
+
+# In case this tool is missing install this - one time
+sudo apt install -y graphviz
+
+bazel query --output=graph "deps(//src:math_app)" \
+> | dot -Tsvg > graph.svg
+```
