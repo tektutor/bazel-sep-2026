@@ -1,0 +1,6 @@
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+cc_library(
+  name = "math_lib",
+  srcs = ["math_ops.h", "math_ops.cpp"],
+)
