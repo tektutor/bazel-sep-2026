@@ -86,3 +86,29 @@ sudo apt install -y graphviz
 bazel query --output=graph "deps(//src:math_app)" \
 > | dot -Tsvg > graph.svg
 ```
+
+## Lab - Understanding Visibility
+
+```
+cd ~/bazel-sep-2026
+git pull
+cd Day2/cppapp-with-prebuilt-lib-dependency-with-visibility
+ls -l
+cat MODULE.bazel
+cat BUILD
+
+# This package only allows to the packages which are in the math_app_users package group
+cat third_party/libmath/BUILD
+
+cat src/BUILD
+cat other/BUILD
+
+bazel clean
+# This should work as src package is in the math_app_users package group
+bazel build //src:math_app
+
+# This should fail as other package is not under the math_app_users package group
+bazel build //other:other_app
+
+bazel clean --expunge
+```
