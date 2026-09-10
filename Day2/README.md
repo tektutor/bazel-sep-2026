@@ -142,7 +142,7 @@ bazel query 'deps(//app:hello)'
 bazel query 'deps(//test:hello_test)'
 
 # Create dependency graph as an image
-bazel query 'deps('//app:hello') --output=graph | dot -Tpng > graph.png
+bazel query 'deps('//app:hello')' --output=graph | dot -Tpng > graph.png
 
 # List only direct dependencies
 bazel query 'labels(deps, //app:hello')
