@@ -2,9 +2,9 @@
 
 ## Today's Agenda
 <pre>
-- [] Using pre-built static library in C++ project using cc_import
-- [ ] - Monorepo concepts in Bazel
-  - [] detailed overview along with hands-on examples
+- [☑️] Using pre-built static library in C++ project using cc_import
+- [☑️] - Monorepo concepts in Bazel
+  - [☑️] detailed overview along with hands-on examples
 - [] Bazel caching mechanisms
   - [] local cache
   - [] remote cache
@@ -13,8 +13,8 @@
   - [] hands-on using JFrog Artifactory or Git-based registries
   - [] Custom rule development using Starlark
   - [] with practical examples ( beyond macros )
-- [] Bazel testing framework
-- [] including bazel test
+- [☑️] Bazel testing framework
+- [☑️] including bazel test
 - [] test rules
 - [] basic coverage concepts
 </pre>
