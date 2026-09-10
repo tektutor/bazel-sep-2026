@@ -252,3 +252,4 @@ bazel run //src:hello
 bazel query //src:hello_lib --output=build 2>/dev/null
 bazel query //src:hello --output=build 2>/dev/null
 ```
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/3a44684c-ddd5-4f14-9313-0d056516b37f" />
