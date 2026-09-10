@@ -420,3 +420,18 @@ bazel test test_lib
 
 bazel clean
 ```
+
+## Lab - Building multi-target cpp application with bazel
+```
+cd ~/bazel-sep-2026
+git pull
+cd Day1/cpp-multitarget-bazel
+cat MODULE.bazel
+cat app/BUILD
+cat lib/BUILD
+
+bazel build lib:hello_lib
+bazel build app:hello
+bazel run app:hello
+```
+
