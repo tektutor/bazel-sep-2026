@@ -177,4 +177,20 @@ bazel build --config=debug //app:hello --subcommands
 bazel build --config=release //app:hello --subcommands
 ```
 
+## Lab - What is a sandbox isolation in Bazel ?
 
+Note
+<pre>
+- Every build action runs in a private, temporary filesystem
+- it can only see files that were explicitly declared as inputs
+- For example, I may have 100 files in a bazel project folder,  but if I have declared only 5
+  files as inputin cc_* blocks, only those 5 files are visibile within sandbox folder 
+- The other 95 files though they are in your work machine filesystem, bazel sandbox can't see them
+</pre>
+
+```
+cd ~/bazel-sep-2026
+git pull
+cd Day2/build-configurations-release-debug
+bazel aquery //app:hello --output=jsonproto 2>/dev/null | grep -oE '[^"]+\.cpp|h|cc|c|cxx|hpp)' | grep -v ""^/" | sort -u
+```
