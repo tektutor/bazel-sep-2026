@@ -54,3 +54,24 @@ bazel run src:math_app
 
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/9a68841c-1cdb-4ebe-ba73-1aa5d1254ba3" />
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/0143757b-8dc8-42b5-8b67-67c57445e37a" />
+
+List all targets
+```
+cd ~/bazel-sep-2026/Day2/cppapp-with-prebuilt-lib-dependency
+
+bazel query //...
+```
+
+List the dependency graph
+```
+cd ~/bazel-sep-2026/Day2/cppapp-with-prebuilt-lib-dependency
+
+bazel query "deps(//src:math_app)"
+```
+
+Visualize the action graph
+```
+cd ~/bazel-sep-2026/Day2/cppapp-with-prebuilt-lib-dependency
+
+bazel aquery //src:math_app
+```
