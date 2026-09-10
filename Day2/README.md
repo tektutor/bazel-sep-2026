@@ -95,6 +95,9 @@ git pull
 cd Day2/cppapp-with-prebuilt-lib-dependency-with-visibility
 ls -l
 cat MODULE.bazel
+# package_group is useful for access control declarations
+# Mainly used for controlling visibility during analysis phase
+# package_group can be nested, i.e one package_group can include other package_groups when required
 cat BUILD
 
 # This package only allows to the packages which are in the math_app_users package group
