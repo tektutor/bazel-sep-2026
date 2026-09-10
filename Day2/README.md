@@ -103,6 +103,7 @@ cat third_party/libmath/BUILD
 cat src/BUILD
 cat other/BUILD
 
+# This will delete the build outputs i.e bazel-bin bazel-out and the other folders
 bazel clean
 # This should work as src package is in the math_app_users package group
 bazel build //src:math_app
@@ -110,5 +111,6 @@ bazel build //src:math_app
 # This should fail as other package is not under the math_app_users package group
 bazel build //other:other_app
 
+# This will delete the build output kept in disk and the downloads, server state maintained the bazel server 
 bazel clean --expunge
 ```
