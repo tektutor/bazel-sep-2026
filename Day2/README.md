@@ -222,6 +222,7 @@ bazel aquery //app:hello --output=text 2>/dev/null \
 
 bazel aquery //app:hello --output=text 2>/dev/null \
   | grep -iE "ActionKey:|Mnemonic:|Target:"
-
-
 ```
+
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/31e70b60-a725-4f16-9a3a-f7e4690d1197" />
+
