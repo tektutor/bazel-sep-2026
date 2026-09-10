@@ -145,8 +145,8 @@ bazel query 'deps(//test:hello_test)'
 bazel query 'deps('//app:hello')' --output=graph | dot -Tpng > graph.png
 
 # List only direct dependencies
-bazel query 'labels(deps, //app:hello')
-bazel query 'labels(deps,//test:hello_test')
+bazel query 'labels(deps, //app:hello)'
+bazel query 'labels(deps,//test:hello_test)'
 ```
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/dd08705e-8305-403a-8cea-7091518f08cd" />
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/126da0a8-70cb-47b2-bb3d-836e684b0760" />
