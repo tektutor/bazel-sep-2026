@@ -1,6 +1,8 @@
 module (
-  name = "libmath",
-  version = "1.0.0",
+   name = "libmath",
+   version = "1.0.0",
 )
 
 bazel_dep(name = "rules_cc", version = "0.2.17")
+
+

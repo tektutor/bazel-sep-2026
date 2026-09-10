@@ -6,5 +6,6 @@ cc_import(
    hdrs = ["math_ops.h"],
    #visibility = ["//visibility:public"],
    #visibility = ["//visibility:private"],
-   visibility = ["//src:__pkg__"],
+   #visibility = ["//app:__pkg__"],
+   visibility = ["//:math_app_users"],
 )

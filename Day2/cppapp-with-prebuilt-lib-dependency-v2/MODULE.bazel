@@ -1,0 +1,12 @@
+module(
+  name = "mymath_project",
+  version = "1.2.5",
+)
+
+bazel_dep(name = "rules_cc", version = "0.2.17")
+bazel_dep(name = "libmath",  version = "1.0.0")
+
+local_path_override(
+  module_name = "libmath",
+  path = "/home/jegan/bazel-sep-2026/Day2/math-lib/bin",
+)
