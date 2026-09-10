@@ -86,3 +86,95 @@ sudo apt install -y graphviz
 bazel query --output=graph "deps(//src:math_app)" \
 > | dot -Tsvg > graph.svg
 ```
+
+## Lab - Understanding Visibility
+
+```
+cd ~/bazel-sep-2026
+git pull
+cd Day2/cppapp-with-prebuilt-lib-dependency-with-visibility
+ls -l
+cat MODULE.bazel
+# package_group is useful for access control declarations
+# Mainly used for controlling visibility during analysis phase
+# package_group can be nested, i.e one package_group can include other package_groups when required
+cat BUILD
+
+# This package only allows to the packages which are in the math_app_users package group
+cat third_party/libmath/BUILD
+
+cat src/BUILD
+cat other/BUILD
+
+# This will delete the build outputs i.e bazel-bin bazel-out and the other folders
+bazel clean
+# This should work as src package is in the math_app_users package group
+bazel build //src:math_app
+
+# This should fail as other package is not under the math_app_users package group
+bazel build //other:other_app
+
+# This will delete the build output kept in disk and the downloads, server state maintained the bazel server
+# This is a blocking command
+# This must be used carefully, as it will delete all the external dependencies downloaded
+# The next build will have re-download everything from scratch
+bazel clean --expunge
+
+# This runs in the background, doesn't not block the terminal
+bazel clean --expunge_async 
+```
+
+## Lab - Bazel Dependency graph
+```
+cd ~/bazel-sep-2026
+git pull
+cd Day2/build-configurations-release-debug
+
+tree
+
+# Find all the targets supported
+bazel query //...
+
+# List all dependencies of the app:hello target
+bazel query 'deps(//app:hello)'
+
+# List all dependencies of the test:hello_test target
+bazel query 'deps(//test:hello_test)'
+
+# Create dependency graph as an image
+bazel query 'deps('//app:hello')' --output=graph | dot -Tpng > graph.png
+
+# List only direct dependencies
+bazel query 'labels(deps, //app:hello)'
+bazel query 'labels(deps,//test:hello_test)'
+```
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/dd08705e-8305-403a-8cea-7091518f08cd" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/126da0a8-70cb-47b2-bb3d-836e684b0760" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/18ba38c2-d17b-4b36-9e1f-190b86615d03" />
+
+## Lab - Bazel build configurations - release & debug
+```
+cd ~/bazel-sep-2026
+git pull
+cd Day2/build-configurations-release-debug
+
+tree
+
+bazel build --compilation_mode=fastbuild  //app:hello # Default build
+bazel build //app:hello # Default build
+
+bazel build --config=debug //app:hello
+bazel build --config=release //app:hello
+ls
+tree bazel-out
+
+# To build all targets
+bazel build //...
+
+# To see the compiler flags used
+bazel build //app:hello --subcommands
+bazel build --config=debug //app:hello --subcommands
+bazel build --config=release //app:hello --subcommands
+```
+
+
