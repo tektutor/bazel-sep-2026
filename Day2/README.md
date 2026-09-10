@@ -193,4 +193,7 @@ cd ~/bazel-sep-2026
 git pull
 cd Day2/build-configurations-release-debug
 bazel aquery //app:hello --output=jsonproto 2>/dev/null | grep -oE '[^"]+\.(cpp|h|cc|c|cxx|hpp)' | grep -v "^/" | sort -u
+bazel aquery //lib:hello_lib --output=jsonproto 2>/dev/null | grep -oE '[^"]+\.(cpp|h|cc|c|cxx|hpp)' | grep -v "^/" | sort -u
+bazel aquery //test:hello_test --output=jsonproto 2>/dev/null | grep -oE '[^"]+\.(cpp|h|cc|c|cxx|hpp)' | grep -v "^/" | sort -u
+
 ```
