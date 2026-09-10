@@ -226,3 +226,30 @@ bazel aquery //app:hello --output=text 2>/dev/null \
 
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/31e70b60-a725-4f16-9a3a-f7e4690d1197" />
 
+## Lab - Bazel Macro
+Note
+<pre>
+- Bazel macro is a Starlark function in a .bzl file that expands into one or more rule, when loaded in a BUILD file
+- lets you define reusable patterns, enforces team standars, and reduces repetition across a large codebase
+</pre>
+
+```
+cd ~/bazel-sep-2026
+git pull
+cd Day2/bazel-macro-with-starlark
+ls -la
+tree
+cat MODULE.bazel
+cat src/BUILD
+cat tools/BUILD
+cat tools/rules.bzl
+cat .bazelversion
+
+bazel build //src:hello
+bazel run //src:hello
+
+# Check how the bazel macro gets expanded
+bazel query //src:hello_lib --output=build 2>/dev/null
+bazel query //src:hello --output=build 2>/dev/null
+```
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/3a44684c-ddd5-4f14-9313-0d056516b37f" />
