@@ -113,6 +113,8 @@ bazel build //other:other_app
 
 # This will delete the build output kept in disk and the downloads, server state maintained the bazel server
 # This is a blocking command
+# This must be used carefully, as it will delete all the external dependencies downloaded
+# The next build will have re-download everything from scratch
 bazel clean --expunge
 
 # This runs in the background, doesn't not block the terminal
