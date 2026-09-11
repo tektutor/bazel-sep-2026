@@ -126,6 +126,10 @@ post /login username=jegan
 post /login username=jegan&password=root@123
 exit
 ```
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/75ac9c41-3471-42cb-be1c-258221cd23d1" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/dd5ec4e4-e0e4-435b-9d38-83d89e38ca1a" />
+ "NumFiles": 59,
+
 
 ## Lab - Upgrade your gcc and g++ in Ubuntu
 ```
