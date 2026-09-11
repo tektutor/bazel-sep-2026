@@ -206,7 +206,7 @@ bazel test //... --test_tag_filters=-integration
 ```
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/6c966d3d-ea13-4c56-9a62-4104a78fadf5" />
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/2445f9eb-f432-43f3-b10b-6581f69a5bcd" />
-![Uploading image.png…]()
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/ad9a705d-76bc-4627-b2ac-c7f9833fd573" />
 
 
 ## Lab - Code coverage
@@ -214,7 +214,7 @@ bazel test //... --test_tag_filters=-integration
 sudo apt update && sudo apt install -y lcov
 
 cd ~/bazel-sep-2026
-git pull
+git pulllcov --summary bazel-out/_coverage/_coverage_report.dat 2>&1
 cd Day3/code-coverage
 tree
 cat MODULE.bazel
@@ -228,6 +228,10 @@ bazel coverage //src:hello_test \
   --combined_report=lcov
 lcov --summary bazel-out/_coverage/_coverage_report.dat 2>&1
 ```
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/9a1a3e9f-b22d-423a-8956-0fefa98aa452" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/13ca797b-cf3f-4340-a23e-2dfc43a9cd5d" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/4603b97f-42c3-47f7-9bd7-f0b6a410f10e" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/28619860-3111-4685-b5fa-89ced791f6af" />
 
 ## Lab - Bazel Caching 
 <pre>
