@@ -141,7 +141,7 @@ exit
 
 ## Lab - Upgrade your gcc and g++ in Ubuntu
 ```
-sudo apt update && apt install -y gcc-14 g++-14
+sudo apt update && sudo apt install -y gcc-14 g++-14
 gcc-14 --version
 g++-14 --version
 ```
