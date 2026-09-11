@@ -11,8 +11,8 @@
   - [] cache optimization techniques with hands-on examples
 - [] Bazel module system (Bzlmod) and registry usage
   - [] hands-on using JFrog Artifactory or Git-based registries
-  - [] Custom rule development using Starlark
-  - [] with practical examples ( beyond macros )
+  - [☑️] Custom rule development using Starlark
+  - [☑️] with practical examples ( beyond macros )
 - [☑️] Bazel testing framework
 - [☑️] including bazel test
 - [] test rules
