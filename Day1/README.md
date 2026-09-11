@@ -17,7 +17,7 @@
 - [✅] Action Key
 - [✅] Sandbox Isolation
 - [✅] Dependency Management ( Modern Bazel )
-- [☑️] Macro
+- [✅] Macro
 - [ ] Aspect
 - [ ] Toolchain
 - [✅] Configuration
