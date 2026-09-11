@@ -165,6 +165,10 @@ bazel test //src:all --test_tag_filters=unit --test_output=all
 bazel test //src:all --test_tag_filters=integration --test_output=all
 bazel test //src:hello_slow_test --test_output=all
 ```
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/abd92af0-d7da-4d86-93e2-e8d4cb1cdfc4" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/1d1093e0-3c67-4dbd-9a17-f3d7cd53408f" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/01f0ab86-c04b-4df5-bcb5-bd2d7215ff73" />
+
 
 ## Lab - Custom Test rules
 ```
