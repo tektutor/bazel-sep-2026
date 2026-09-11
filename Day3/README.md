@@ -315,6 +315,7 @@ sed -i '/MY_FLAG/d' .bazelrc
 cd ~/bazel-sep-2026
 git pull
 cd Day3/bazel-caching
+cp ../code-coverage/toolchain/toolchain_config.bzl toolchain/
 bazel clean --expunge
 time bazel build --config=remote-cache //src:hello
 
@@ -401,7 +402,7 @@ Contrast: turn the cache off and watch it get slow again
 bazel clean --expunge
 bazel build //... --remote_cache=
 ```
-
+bazel test //... --config=integration --announce_rc
 Demonstrate the tag-filter configs
 ```
 bazel test //... --config=integration --announce_rc
