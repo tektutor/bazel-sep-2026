@@ -5,10 +5,10 @@
 - [✅] Using pre-built static library in C++ project using cc_import
 - [✅] - Monorepo concepts in Bazel
   - [✅] detailed overview along with hands-on examples
-- [] Bazel caching mechanisms
-  - [] local cache
-  - [] remote cache
-  - [] cache optimization techniques with hands-on examples
+- [✅] Bazel caching mechanisms
+  - [✅] local cache
+  - [✅] remote cache
+  - [✅] cache optimization techniques with hands-on examples
 - [] Bazel module system (Bzlmod) and registry usage
   - [] hands-on using JFrog Artifactory or Git-based registries
   - [✅] Custom rule development using Starlark
