@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/jegan/bazel-sep-2026/Day1/cpp-with-cmake/bin/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

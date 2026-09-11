@@ -1,0 +1,2 @@
+# WORKSPACE stub — bzlmod owns all dep resolution via MODULE.bazel.
+workspace(name = "monorepo")

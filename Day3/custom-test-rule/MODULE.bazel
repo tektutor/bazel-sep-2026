@@ -1,0 +1,7 @@
+module(
+    name = "uppercase_demo",
+    version = "0.1.0",
+)
+
+# Pick the latest rules_cc release; 0.2.19 is current as of now.
+bazel_dep(name = "rules_cc", version = "0.2.19")

@@ -1,0 +1,22 @@
+build --cxxopt=-std=c++17
+build --cxxopt=-Wall
+build --cxxopt=-Wextra
+build --cxxopt=-Wno-free-nonheap-object
+
+test     --test_output=all
+coverage --instrumentation_filter=//src
+coverage --combined_report=lcov
+
+build:debug   --compilation_mode=dbg  --cxxopt=-g
+build:release --compilation_mode=opt  --cxxopt=-O3 --strip=always
+
+# Platform shortcuts
+build:linux_x86   --platforms=//platforms:linux_x86_64
+build:linux_arm   --platforms=//platforms:linux_aarch64
+build:bare_metal  --platforms=//platforms:bare_metal
+
+# Remote cache via HTTP
+build:remote-cache --remote_cache=http://172.17.0.2:8080
+build:remote-cache --remote_upload_local_results=true
+
+

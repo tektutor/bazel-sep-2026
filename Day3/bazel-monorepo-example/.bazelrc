@@ -1,0 +1,23 @@
+# ── Suppress all warnings everywhere ─────────────────────────────────────────
+build --cxxopt=-w
+build --host_cxxopt=-w
+
+# Local disk cache
+build --disk_cache=~/.cache/bazel_disk_cache
+
+# Remote cache (private registry - docker container )
+build --remote_cache=grpc://localhost:9090
+
+# Enable cache activity verbosity
+build --show_result=100
+
+# ── C++ standard ─────────────────────────────────────────────────────────────
+build --cxxopt=-std=c++17
+build --host_cxxopt=-std=c++17
+
+# ── Build environment ─────────────────────────────────────────────────────────
+build --define=build_env=dev
+build --workspace_status_command=tools/workspace_status.sh
+
+# ── Tests ─────────────────────────────────────────────────────────────────────
+test --test_output=errors

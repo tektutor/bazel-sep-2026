@@ -1,0 +1,3 @@
+/home/jegan/bazel-sep-2026/Day1/cpp-with-cmake/bin/CMakeFiles/app.dir
+/home/jegan/bazel-sep-2026/Day1/cpp-with-cmake/bin/CMakeFiles/edit_cache.dir
+/home/jegan/bazel-sep-2026/Day1/cpp-with-cmake/bin/CMakeFiles/rebuild_cache.dir

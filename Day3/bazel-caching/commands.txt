@@ -1,0 +1,2 @@
+bazel build //... --config=release --config=linux_arm --config=remote-cache
+

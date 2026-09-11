@@ -1,0 +1,14 @@
+load("@rules_cc//cc:defs.bzl", "cc_binary")
+
+platform (
+   name = "aarch64_linux",
+   constraint_values = [
+	   "@platforms//cpu:aarch64",
+	   "@platforms//os:linux",
+   ],
+)
+
+cc_binary (
+   name = "hello",
+   srcs = ["hello.cpp"],
+)
