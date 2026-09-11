@@ -315,7 +315,6 @@ sed -i '/MY_FLAG/d' .bazelrc
 cd ~/bazel-sep-2026
 git pull
 cd Day3/bazel-caching
-cp ../code-coverage/toolchain/toolchain_config.bzl toolchain/
 bazel clean --expunge
 time bazel build --config=remote-cache //src:hello
 
