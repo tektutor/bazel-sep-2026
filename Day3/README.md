@@ -12,6 +12,76 @@
   - [✅] configuration and invocation approaches  
 </pre>
 
+## Lab - Install Docker in Ubuntu
+```
+# Add Docker's official GPG key:
+sudo apt update
+sudo apt install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/ubuntu
+Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
+Components: stable
+Architectures: $(dpkg --print-architecture)
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+
+sudo apt update
+
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+
+sudo usermod -aG docker $USER
+newgrp docker
+docker --version
+docker images
+```
+
+## Lab - Setup a remote cache server using docker
+```
+# Create the directory ( do it as a non-admin user )
+mkdir -p /tmp/bazel-remote-cache
+
+# Troubleshooting permission denied in case you have already created the folder as admin
+sudo chown labuser:labuser /tmp/bazel-remote-cache
+sudo chmod 777 /tmp/bazel-remote-cache
+
+# Using Docker (easiest)
+docker run -d \
+  --name bazel-remote \
+  -p 9090:8080 \
+  -p 9092:9092 \
+  -v /tmp/bazel-remote-cache:/data \
+  buchgr/bazel-remote-cache \
+  --dir=/data \
+  --max_size=5
+
+# Check if the docker container your created is running properly
+docker ps
+docker logs bazel-remote
+
+# Find the IP address of the container
+docker inspect bazel-remote | grep IPA
+docker inspect -f {{.NetworkSettings.IPAddress}} bazel-remote
+
+# Verify it is running
+curl http://172.17.0.2:8080/status
+curl http://localhost:9090
+```
+
+#### Configure remote cache server
+```
+cat >> .bazelrc << 'EOF'
+
+# Remote cache configuration
+build:remote-cache --remote_cache=http://172.17.0.2:8080
+build:remote-cache --remote_upload_local_results=true
+EOF
+
 ## Lab - Bazel Monorepo example
 ```
 cd ~/bazel-sep-2026
@@ -21,10 +91,9 @@ tree
 bazel query //...
 cat app/cli/BUILD
 
-bazel build //app/cli:cli
+bazel build //app/cli:cli --remote_cache=
 bazel run //app/cli:cli
 
-/get health
 login jegan root@123
 get /whoami Bearer amVnYW4uYjZmY2ZlYmZkY2M4ZTgzNWNiZWU3YzczYTU0NWU1MDc0N2RiODhlOWQzNWZmYzhmMjM5OTI4MjhlZWE4OWEyYQ==
 post /login username=jegan
