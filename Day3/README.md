@@ -80,6 +80,23 @@ curl http://localhost:9090
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/addd13f7-f8cb-40e0-b178-65d8f809e3d5" />
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/4ca691aa-f5be-482d-b7ae-838bb4e35b34" />
 
+Troubleshooting Permission denied error
+```
+docker rm -f bazel-remote
+sudo chown 1000:1000 -R /tmp/bazel-remote-cache
+sudo chmod 777 -R /tmp/bazel-remote-cache
+
+docker run -d \
+  --name bazel-remote \
+  -p 9090:8080 \
+  -p 9092:9092 \
+  -v /tmp/bazel-remote-cache:/data \
+  buchgr/bazel-remote-cache \
+  --dir=/data \
+  --max_size=5
+
+docker logs bazel-remote
+```
 
 #### Configure remote cache server
 ```
