@@ -18,8 +18,8 @@
 - [✅] Sandbox Isolation
 - [✅] Dependency Management ( Modern Bazel )
 - [✅] Macro
-- [ ] Aspect
-- [ ] Toolchain
+- [✅] Aspect
+- [✅] Toolchain
 - [✅] Configuration
 - [✅] Visibility
 - [✅] Tag
