@@ -15,7 +15,7 @@
   - [✅] with practical examples ( beyond macros )
 - [✅] Bazel testing framework
 - [✅] including bazel test
-- [] test rules
+- [✅] test rules
 - [] basic coverage concepts
 </pre>
 
