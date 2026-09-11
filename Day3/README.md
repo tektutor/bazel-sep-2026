@@ -439,6 +439,20 @@ file ./hello
 qemu-aarch64 ./hello
 ```
 
+## Lab - Downloading and launching Jenkins
+```
+cd ~/Downloads
+wget https://get.jenkins.io/war-stable/2.568.3/jenkins.war
+
+# Launch jenkins
+java -jar ./jenkins.war
+
+# Access the Jenkins Dashboard from web browser
+http://localhost:8080
+```
+
+
+
 ## References
 <pre>
 https://bazel.build/external/overview
