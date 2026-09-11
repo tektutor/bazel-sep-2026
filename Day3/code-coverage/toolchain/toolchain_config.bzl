@@ -14,16 +14,16 @@ load(
 
 def _my_gcc_toolchain_config_impl(ctx):
     tool_paths = [
-        tool_path(name = "gcc",     path = "/usr/bin/gcc"),
-        tool_path(name = "g++",     path = "/usr/bin/g++"),
-        tool_path(name = "ar",      path = "/usr/bin/ar"),
+        tool_path(name = "gcc",     path = "/opt/gcc-16/bin/gcc-16"),
+        tool_path(name = "g++",     path = "/opt/gcc-16/bin/g++-16"),
+        tool_path(name = "ar",      path = "/opt/gcc-16/bin/gcc-ar-16"),
         tool_path(name = "ld",      path = "/usr/bin/ld"),
-        tool_path(name = "nm",      path = "/usr/bin/nm"),
+        tool_path(name = "nm",      path = "/opt/gcc-16/bin/gcc-nm-16"),
         tool_path(name = "objcopy", path = "/usr/bin/objcopy"),
         tool_path(name = "objdump", path = "/usr/bin/objdump"),
         tool_path(name = "strip",   path = "/usr/bin/strip"),
-        tool_path(name = "gcov",    path = "/usr/bin/gcov"),
-        tool_path(name = "cpp",     path = "/usr/bin/cpp"),
+        tool_path(name = "gcov",    path = "/opt/gcc-16/bin/gcov-16"),
+        tool_path(name = "cpp",     path = "/opt/gcc-16/bin/cpp-16"),
         tool_path(name = "dwp",     path = "/usr/bin/dwp"),
     ]
 
@@ -131,15 +131,17 @@ def _my_gcc_toolchain_config_impl(ctx):
         abi_version            = "local",
         abi_libc_version       = "local",
         tool_paths             = tool_paths,
-        cxx_builtin_include_directories = [
-            "/usr/lib/gcc/x86_64-linux-gnu/14/include",
-            "/usr/local/include",
-            "/usr/include/x86_64-linux-gnu",
-            "/usr/include",
-            "/usr/include/c++/14",
-            "/usr/include/x86_64-linux-gnu/c++/14",
-            "/usr/include/c++/14/backward",
-        ],
+	cxx_builtin_include_directories = [
+    		"/opt/gcc-16/include/c++/16.1.0/",
+    		"/opt/gcc-16/include/c++/16.1.0/x86_64-pc-linux-gnu/",
+    		"/opt/gcc-16/include/c++/16.1.0/backward/",
+    		"/opt/gcc-16/lib/gcc/x86_64-pc-linux-gnu/16.1.0/include/",
+    		"/usr/local/include",
+    		"/opt/gcc-16/include",
+    		"/opt/gcc-16/lib/gcc/x86_64-pc-linux-gnu/16.1.0/include-fixed/",
+    		"/usr/include/x86_64-linux-gnu",
+    		"/usr/include",
+	],
         features = [
             default_compile_flags,
             cxx_flags,

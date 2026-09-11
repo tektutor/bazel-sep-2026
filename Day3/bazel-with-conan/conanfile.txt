@@ -1,0 +1,8 @@
+[requires]
+fmt/11.1.4
+
+[generators]
+BazelDeps
+
+[layout]
+bazel_layout

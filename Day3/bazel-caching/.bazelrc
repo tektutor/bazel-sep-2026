@@ -19,4 +19,25 @@ build:bare_metal  --platforms=//platforms:bare_metal
 build:remote-cache --remote_cache=http://172.17.0.2:8080
 build:remote-cache --remote_upload_local_results=true
 
+# --- Remote cache: the local bazel-remote container ---
+# gRPC endpoint you published with -p 9092:9092.
+# build options are inherited by test, run, and coverage, so this
+# one line covers `bazel test` too.
+build --remote_cache=grpc://localhost:9092
+
+# --- Test output ---
+# Show output only when a test fails, instead of staying silent.
+test --test_output=errors
+
+# --- Tag-based test filtering (your demo) ---
+#   bazel test //... --config=integration   runs only integration tests
+#   bazel test //... --config=unit          runs only unit tests
+test:integration --test_tag_filters=integration
+test:unit --test_tag_filters=unit
+
+# --- For later, when a second machine or CI joins ---
+#   bazel build //... --config=dev   reads the cache, uploads nothing
+#   bazel build //... --config=ci    reads and writes the cache
+build:dev --noremote_upload_local_results
+build:ci --remote_upload_local_results
 
