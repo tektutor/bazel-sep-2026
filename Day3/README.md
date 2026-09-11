@@ -71,7 +71,7 @@ docker logs bazel-remote
 
 # Find the IP address of the container
 docker inspect bazel-remote | grep IPA
-docker inspect -f {{.NetworkSettings.IPAddress}} bazel-remote
+docker inspect -f {{.NetworkSettings.Networks.bridge.IPAddress}} bazel-remote
 
 # Verify it is running
 curl http://172.17.0.2:8080/status
