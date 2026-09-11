@@ -440,6 +440,12 @@ qemu-aarch64 ./hello
 ```
 
 ## Lab - Downloading and launching Jenkins
+
+For step by step instruction on how to install and configure Jenkins refer my bloc
+<pre>
+https://www.tektutor.org/ci-cd-with-maven-github-docker-jenkins/
+https://medium.com/tektutor/ci-cd-with-maven-github-docker-jenkins-aca28c252fec
+</pre>
 ```
 cd ~/Downloads
 wget https://get.jenkins.io/war-stable/2.568.3/jenkins.war
