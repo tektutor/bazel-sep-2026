@@ -81,6 +81,7 @@ cat >> .bazelrc << 'EOF'
 build:remote-cache --remote_cache=http://172.17.0.2:8080
 build:remote-cache --remote_upload_local_results=true
 EOF
+```
 
 ## Lab - Bazel Monorepo example
 ```
