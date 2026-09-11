@@ -2,15 +2,15 @@
 
 ## Today's Agenda
 <pre>
-  [✅]
-- [] Incremental builds and rebuild behavior
-  -  understanding dependency tracking and rebuild triggers
--  C/C++ and embedded use cases
-  -  including cross-compilation (e.g., Linux ARM toolchain setup)
--  CI/CD integration
-  -  configuring Bazel in pipelines such as Jenkins or GitHub Actions
-- Docs-as-Code integration with Bazel
-  -  configuration and invocation approaches  
+  
+- [✅] Incremental builds and rebuild behavior
+  - [✅] understanding dependency tracking and rebuild triggers
+-  [✅] C/C++ and embedded use cases
+  -  [✅] including cross-compilation (e.g., Linux ARM toolchain setup)
+-  [✅] CI/CD integration
+  -  [✅] configuring Bazel in pipelines such as Jenkins or GitHub Actions
+- [✅] Docs-as-Code integration with Bazel
+  -  [✅] configuration and invocation approaches  
 </pre>
 
 ## Lab - Install Docker in Ubuntu
@@ -100,7 +100,7 @@ docker logs bazel-remote
 
 #### Configure remote cache server
 ```
-cat >> .bazelrc << 'EOF'
+cat >> ~/.bazelrc << 'EOF'
 
 # Remote cache configuration
 build:remote-cache --remote_cache=http://172.17.0.2:8080
@@ -117,8 +117,17 @@ tree
 bazel query //...
 cat app/cli/BUILD
 
-bazel build //app/cli:cli --remote_cache=
+# Check the remote registry status and observer file count
+curl http://localhost:9090/status
+curl http://172.17.0.2:8080/status
+
+# Disable local disk cache and push the artifacts to remote registry ( docker container )
+bazel build //app/cli:cli --config=remote-cache --disk_cache=""
 bazel run //app/cli:cli
+
+# Check the remote registry status and observer file count
+curl http://localhost:9090/status
+curl http://172.17.0.2:8080/status
 
 login jegan root@123
 get /whoami Bearer amVnYW4uYjZmY2ZlYmZkY2M4ZTgzNWNiZWU3YzczYTU0NWU1MDc0N2RiODhlOWQzNWZmYzhmMjM5OTI4MjhlZWE4OWEyYQ==
@@ -126,10 +135,13 @@ post /login username=jegan
 post /login username=jegan&password=root@123
 exit
 ```
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/75ac9c41-3471-42cb-be1c-258221cd23d1" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/dd5ec4e4-e0e4-435b-9d38-83d89e38ca1a" />
+
 
 ## Lab - Upgrade your gcc and g++ in Ubuntu
 ```
-sudo apt update && apt install -y gcc-14 g++-14
+sudo apt update && sudo apt install -y gcc-14 g++-14
 gcc-14 --version
 g++-14 --version
 ```
@@ -152,7 +164,18 @@ bazel test //src:all --test_tag_filters=requires-network --test_output=all
 bazel test //src:all --test_tag_filters=unit --test_output=all
 bazel test //src:all --test_tag_filters=integration --test_output=all
 bazel test //src:hello_slow_test --test_output=all
+
+# Run all test cases
+bazel test //src:all
+
+# Skip integration test cases
+bazel test //src:all --test_tag_filters=-integration
 ```
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/abd92af0-d7da-4d86-93e2-e8d4cb1cdfc4" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/1d1093e0-3c67-4dbd-9a17-f3d7cd53408f" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/01f0ab86-c04b-4df5-bcb5-bd2d7215ff73" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/005b4883-2b60-44bb-ad0d-1d740456cdf5" />
+
 
 ## Lab - Custom Test rules
 ```
@@ -181,13 +204,17 @@ bazel test //... --test_tag_filters=unit
 # Run all test cases except integration test cases
 bazel test //... --test_tag_filters=-integration
 ```
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/6c966d3d-ea13-4c56-9a62-4104a78fadf5" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/2445f9eb-f432-43f3-b10b-6581f69a5bcd" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/ad9a705d-76bc-4627-b2ac-c7f9833fd573" />
+
 
 ## Lab - Code coverage
 ```
 sudo apt update && sudo apt install -y lcov
 
 cd ~/bazel-sep-2026
-git pull
+git pulllcov --summary bazel-out/_coverage/_coverage_report.dat 2>&1
 cd Day3/code-coverage
 tree
 cat MODULE.bazel
@@ -201,6 +228,10 @@ bazel coverage //src:hello_test \
   --combined_report=lcov
 lcov --summary bazel-out/_coverage/_coverage_report.dat 2>&1
 ```
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/9a1a3e9f-b22d-423a-8956-0fefa98aa452" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/13ca797b-cf3f-4340-a23e-2dfc43a9cd5d" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/4603b97f-42c3-47f7-9bd7-f0b6a410f10e" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/28619860-3111-4685-b5fa-89ced791f6af" />
 
 ## Lab - Bazel Caching 
 <pre>
@@ -306,7 +337,7 @@ cat /tmp/build_events.json | python3 -m json.tool \
 # Always check remote cache, never use local cache
 bazel build //src:hello \
   --remote_cache=http://172.17.0.2:8080 \
-  --noremote_accept_cached=false \
+  --remote_accept_cached=false \
   --remote_upload_local_results=true
 ```
 
@@ -370,7 +401,7 @@ Contrast: turn the cache off and watch it get slow again
 bazel clean --expunge
 bazel build //... --remote_cache=
 ```
-
+bazel test //... --config=integration --announce_rc
 Demonstrate the tag-filter configs
 ```
 bazel test //... --config=integration --announce_rc
@@ -385,7 +416,7 @@ cat docs/BUILD
 bazel build //docs:training_notes
 bazel build //docs:training_notes
 
-bazel run //src:md2pdf -- --source https://github.com/tektutor/bazel-june-2026.git --folders day1 day2 day3 --output $PWD/notes.pdf
+bazel run //src:md2pdf -- --source https://github.com/tektutor/bazel-sep-2026.git --folders Day1 Day2 Day3 --output $PWD/notes.pdf
 ```
 
 ## Lab - Embedded application that supports different processor architectures(platforms)
@@ -407,6 +438,26 @@ cd bazel-bin
 file ./hello
 qemu-aarch64 ./hello
 ```
+
+## Lab - Downloading and launching Jenkins
+
+For step by step instruction on how to install and configure Jenkins refer my bloc
+<pre>
+https://www.tektutor.org/ci-cd-with-maven-github-docker-jenkins/
+https://medium.com/tektutor/ci-cd-with-maven-github-docker-jenkins-aca28c252fec
+</pre>
+```
+cd ~/Downloads
+wget https://get.jenkins.io/war-stable/2.568.3/jenkins.war
+
+# Launch jenkins
+java -jar ./jenkins.war
+
+# Access the Jenkins Dashboard from web browser
+http://localhost:8080
+```
+
+
 
 ## References
 <pre>

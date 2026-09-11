@@ -18,11 +18,11 @@
 - [✅] Sandbox Isolation
 - [✅] Dependency Management ( Modern Bazel )
 - [✅] Macro
-- [ ] Aspect
-- [ ] Toolchain
+- [✅] Aspect
+- [✅] Toolchain
 - [✅] Configuration
 - [✅] Visibility
-- [ ] Tag
+- [✅] Tag
 - [✅] Install Bazel in Linux
 - [✅] Build a C++ Project using Bazel
 - [✅] Build a Python Project using Bazel
