@@ -52,7 +52,7 @@ docker images
 mkdir -p /tmp/bazel-remote-cache
 
 # Troubleshooting permission denied in case you have already created the folder as admin
-sudo chown jegan:jegan -R /tmp/bazel-remote-cache
+sudo chown 1000:1000 -R /tmp/bazel-remote-cache
 sudo chmod 777 -R /tmp/bazel-remote-cache
 
 # Using Docker (easiest)
