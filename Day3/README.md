@@ -47,8 +47,8 @@ docker images
 mkdir -p /tmp/bazel-remote-cache
 
 # Troubleshooting permission denied in case you have already created the folder as admin
-sudo chown labuser:labuser /tmp/bazel-remote-cache
-sudo chmod 777 /tmp/bazel-remote-cache
+sudo chown jegan:jegan -R /tmp/bazel-remote-cache
+sudo chmod 777 -R /tmp/bazel-remote-cache
 
 # Using Docker (easiest)
 docker run -d \
@@ -106,15 +106,6 @@ exit
 sudo apt update && apt install -y gcc-14 g++-14
 gcc-14 --version
 g++-14 --version
-```
-
-## Lab - Install docker
-```
-sudo apt install -y docker.io
-sudo usermod -aG docker $USER
-sudo su $USER
-docker --version
-docker images
 ```
 
 ## Lab - Bazel Tag
@@ -260,47 +251,6 @@ diff /tmp/keys_before.txt /tmp/keys_after.txt
 
 # Remove the flag
 sed -i '/MY_FLAG/d' .bazelrc
-```
-#### Setup a remote cache server using docker
-```
-# Create the directory ( do it as a non-admin user )
-mkdir -p /tmp/bazel-remote-cache
-
-# Troubleshooting permission denied in case you have already created the folder as admin
-sudo chown labuser:labuser /tmp/bazel-remote-cache
-sudo chmod 777 /tmp/bazel-remote-cache
-
-# Using Docker (easiest)
-docker run -d \
-  --name bazel-remote \
-  -p 9090:8080 \
-  -p 9092:9092 \
-  -v /tmp/bazel-remote-cache:/data \
-  buchgr/bazel-remote-cache \
-  --dir=/data \
-  --max_size=5
-
-# Check if the docker container your created is running properly
-docker ps
-docker logs bazel-remote
-
-# Find the IP address of the container
-docker inspect bazel-remote | grep IPA
-docker inspect -f {{.NetworkSettings.IPAddress}} bazel-remote
-
-# Verify it is running
-curl http://172.17.0.2:8080/status
-curl http://localhost:9090
-```
-
-#### Configure remote cache server
-```
-cat >> .bazelrc << 'EOF'
-
-# Remote cache configuration
-build:remote-cache --remote_cache=http://172.17.0.2:8080
-build:remote-cache --remote_upload_local_results=true
-EOF
 ```
 
 #### Perform clean build
