@@ -117,8 +117,17 @@ tree
 bazel query //...
 cat app/cli/BUILD
 
+# Check the remote registry status and observer file count
+curl http://localhost:9090/status
+curl http://172.17.0.2:8080/status
+
+# Disable local disk cache and push the artifacts to remote registry ( docker container )
 bazel build //app/cli:cli --config=remote-cache --disk_cache=""
 bazel run //app/cli:cli
+
+# Check the remote registry status and observer file count
+curl http://localhost:9090/status
+curl http://172.17.0.2:8080/status
 
 login jegan root@123
 get /whoami Bearer amVnYW4uYjZmY2ZlYmZkY2M4ZTgzNWNiZWU3YzczYTU0NWU1MDc0N2RiODhlOWQzNWZmYzhmMjM5OTI4MjhlZWE4OWEyYQ==
