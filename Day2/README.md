@@ -9,14 +9,14 @@
   - [✅] local cache
   - [✅] remote cache
   - [✅] cache optimization techniques with hands-on examples
-- [] Bazel module system (Bzlmod) and registry usage
-  - [] hands-on using JFrog Artifactory or Git-based registries
+- [✅] Bazel module system (Bzlmod) and registry usage
+  - [✅] hands-on using JFrog Artifactory or Git-based registries
   - [✅] Custom rule development using Starlark
   - [✅] with practical examples ( beyond macros )
 - [✅] Bazel testing framework
 - [✅] including bazel test
 - [✅] test rules
-- [] basic coverage concepts
+- [✅] basic coverage concepts
 </pre>
 
 ## Lab - CPP application that depends on a pre-built static library using Bazel
