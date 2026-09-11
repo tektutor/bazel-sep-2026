@@ -100,7 +100,7 @@ docker logs bazel-remote
 
 #### Configure remote cache server
 ```
-cat >> .bazelrc << 'EOF'
+cat >> ~/.bazelrc << 'EOF'
 
 # Remote cache configuration
 build:remote-cache --remote_cache=http://172.17.0.2:8080
@@ -117,7 +117,7 @@ tree
 bazel query //...
 cat app/cli/BUILD
 
-bazel build //app/cli:cli --remote_cache=
+bazel build //app/cli:cli 
 bazel run //app/cli:cli
 
 login jegan root@123
