@@ -416,7 +416,7 @@ cat docs/BUILD
 bazel build //docs:training_notes
 bazel build //docs:training_notes
 
-bazel run //src:md2pdf -- --source https://github.com/tektutor/bazel-june-2026.git --folders day1 day2 day3 --output $PWD/notes.pdf
+bazel run //src:md2pdf -- --source https://github.com/tektutor/bazel-sep-2026.git --folders Day1 Day2 Day3 --output $PWD/notes.pdf
 ```
 
 ## Lab - Embedded application that supports different processor architectures(platforms)
