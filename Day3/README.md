@@ -77,6 +77,9 @@ docker inspect -f {{.NetworkSettings.IPAddress}} bazel-remote
 curl http://172.17.0.2:8080/status
 curl http://localhost:9090
 ```
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/addd13f7-f8cb-40e0-b178-65d8f809e3d5" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/4ca691aa-f5be-482d-b7ae-838bb4e35b34" />
+
 
 #### Configure remote cache server
 ```
