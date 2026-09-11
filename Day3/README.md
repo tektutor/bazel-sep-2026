@@ -117,7 +117,7 @@ tree
 bazel query //...
 cat app/cli/BUILD
 
-bazel build //app/cli:cli 
+bazel build //app/cli:cli --config=remote-cache --disk_cache=""
 bazel run //app/cli:cli
 
 login jegan root@123
