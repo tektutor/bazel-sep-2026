@@ -338,7 +338,7 @@ cat /tmp/build_events.json | python3 -m json.tool \
 # Always check remote cache, never use local cache
 bazel build //src:hello \
   --remote_cache=http://172.17.0.2:8080 \
-  --noremote_accept_cached=false \
+  --remote_accept_cached=false \
   --remote_upload_local_results=true
 ```
 
