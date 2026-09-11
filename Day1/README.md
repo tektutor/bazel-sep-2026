@@ -12,16 +12,15 @@
 - [☑️] Analysis Phase
 - [☑️] Execution Phase
 - [☑️] Dependency
-- [ ] Incremental & Reproducibility
+- [☑️] Incremental & Reproducibility
 - [☑️] Hermetic Builds
 - [☑️] Action Key
 - [☑️] Sandbox Isolation
-- [ ] Dependency Management ( Modern Bazel )
-- [ ] Macro
-- [ ] Aspect
+- [☑️] Dependency Management ( Modern Bazel )
+- [☑️] Macro
 - [ ] Aspect
 - [ ] Toolchain
-- [ ] Configuration
+- [☑️] Configuration
 - [☑️] Visibility
 - [ ] Tag
 - [☑️] Install Bazel in Linux
